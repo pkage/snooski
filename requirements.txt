@@ -1,0 +1,7 @@
+praw
+urwid
+pygments
+newspaper3k
+requests
+arrow
+
