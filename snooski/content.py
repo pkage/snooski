@@ -9,8 +9,6 @@ from webview import render_web
 
 def render_link(post):
     if post.is_self:
-        with open('/tmp/testmdraw', 'w') as mdr:
-            mdr.write(post.selftext)
         content = highlight(post.selftext, MarkdownLexer(), TerminalFormatter())
         content = urwidify_content(content)
         return urwid.Filler(

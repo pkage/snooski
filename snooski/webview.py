@@ -92,8 +92,16 @@ class LinkDisplay(urwid.WidgetWrap):
         # check the header for content-types, load it if it's probably an article
         r = requests.head(self.post.url)
         if 'content-type' in r.headers and r.headers['content-type'].split(';')[0] == 'text/html':
-            self.open_extract()
-
+            try:
+                self.open_extract()
+            except:
+                status, reason = self.get_http_error()
+                self.renderarea = urwid.WidgetPlaceholder(
+                    urwid.Filler(
+                        urwid.Text('error loading selected\ncontent ({} {})'.format(status, reason), align='center')
+                    )
+                )
+            
         self.frame = urwid.Frame(
             urwid.LineBox(
                 self.renderarea
@@ -122,6 +130,10 @@ class LinkDisplay(urwid.WidgetWrap):
             height=('relative', 100),
             valign='top'
         )
+
+    def get_http_error(self):
+        r = requests.get(self.post.url)
+        return r.status_code, r.reason
 
     def open_raw(self):
         r = requests.get(self.post.url)
