@@ -1,8 +1,8 @@
 import urwid
 import webbrowser
 import requests
-from mdformat import urwidify_content
-from postlist import SelectableButton
+from .mdformat import urwidify_content
+from .postlist import SelectableButton
 from newspaper import Article
 from pygments import highlight
 from pygments.lexers import HtmlLexer

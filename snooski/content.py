@@ -2,9 +2,9 @@ import urwid
 from pygments import highlight
 from pygments.lexers import MarkdownLexer
 from pygments.formatters import TerminalFormatter
-from mdformat import urwidify_content
-from comments import CommentDisplay
-from webview import render_web
+from .mdformat import urwidify_content
+from .comments import CommentDisplay
+from .webview import render_web
 
 
 def render_link(post):

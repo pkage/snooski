@@ -3,8 +3,8 @@ import praw
 from pygments import highlight
 from pygments.lexers import MarkdownLexer
 from pygments.formatters import TerminalFormatter
-from mdformat import urwidify_content
-from postlist import SelectableButton
+from .mdformat import urwidify_content
+from .postlist import SelectableButton
 import arrow
 
 class CommentDisplay(urwid.WidgetWrap):

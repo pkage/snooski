@@ -1,11 +1,11 @@
 
 import urwid
 import praw
-from postlist import PostListDisplay
+from .postlist import PostListDisplay
 import json
-from data import convert_submission_to_obj
-from content import render_link, render_comments
-import mdformat
+from .data import convert_submission_to_obj
+from .content import render_link, render_comments
+from . import mdformat
 
 palette = [
     ('title', 'bold', ''),
@@ -121,6 +121,4 @@ class Snooski(urwid.WidgetWrap):
             self.postlist.load(getattr(self.r.subreddit(cmd), sort)())
 
 
-snooski = Snooski('../creds.json')
-urwid.MainLoop(snooski, palette + mdformat.get_palette(), pop_ups=True).run()
 
